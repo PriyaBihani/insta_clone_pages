@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create POSt</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+          <div
+            class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+          >
+            <div class="flex-shrink-0 flex items-center">
+              <h1 class="text-4xl font-bold text-gray-900 no-underline">
+                Instagram Clone
+              </h1>
+            </div>
+          </div>
+          <div class="ml-4 flex items-center md:ml-6">
+            <div class="flex space-x-8">
+              <!-- Home Link -->
+              <a href="#" class="text-gray-500 hover:text-gray-900">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+                  <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+                </svg>
+              </a>
+
+              <!-- Add Post Link -->
+              <a href="#" class="text-gray-500 hover:text-gray-900">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20 11.08V8l-6-6H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h6"
+                  />
+                  <path d="M14 3v5h5M18 21v-6M15 18h6" />
+                </svg>
+              </a>
+
+              <!-- Profile Link -->
+              <a href="#" class="text-gray-500 hover:text-gray-900">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"
+                  />
+                  <circle cx="12" cy="10" r="3" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+              </a>
+            </div>
+            <!-- LOGOUT -->
+            <div class="ml-12">
+              <a href="#" class="text-gray-500 hover:text-gray-900">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="red"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="flex flex-col items-center justify-center py-2">
+      <div class="p-8 bg-white shadow-lg rounded w-full max-w-lg">
+        <h2 class="mb-6 text-2xl font-semibold text-gray-700">Create Post</h2>
+        <div
+          class="flex justify-center items-center w-full h-64 border-2 border-gray-300 border-dashed rounded"
+        >
+          <label class="text-gray-500 cursor-pointer">
+            <span class="mt-2 text-base leading-normal">Upload an Image</span>
+            <input
+              type="file"
+              class="hidden"
+              id="image"
+              accept="image/*"
+              onchange="previewImage(event)"
+            />
+          </label>
+        </div>
+        <div id="preview" class="mt-4"></div>
+        <div>
+          <label
+            class="block mt-6 mb-2 text-sm font-bold text-gray-700"
+            for="caption"
+            >Caption</label
+          >
+          <textarea
+            class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            id="caption"
+            type="text"
+            placeholder="Write a caption..."
+          ></textarea>
+        </div>
+        <button
+          class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+          type="button"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var output = document.getElementById("preview");
+          output.innerHTML = `<img class="w-full h-64 object-cover rounded" src="${reader.result}" alt="Image preview">`;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
+  </body>
+</html>
